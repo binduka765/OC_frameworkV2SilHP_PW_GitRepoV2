@@ -1,0 +1,18 @@
+{
+  "name": "oc_frameworkv2silhp_pw",
+  "version": "1.0.0",
+   "description": "to practice end to end and to debug",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "veniKa",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "playwright": "^1.61.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.61.0",
+    "@types/node": "^26.0.0"
+  }
+}

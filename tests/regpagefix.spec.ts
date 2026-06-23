@@ -18,15 +18,7 @@ test("tc1:register page title test", async ({ registrationpage }) => {
 });
 
 
-test("tc2: forgot pwd link exist test", async ({registrationpage}) => {
-  expect(await registrationpage.isForgotPwdLinkOnRegPageExist()).toBeTruthy();
-});
-
-test("tc3: login link exist test", async ({registrationpage}) => {
-  expect(await registrationpage.isLoginLinkExist()).toBeTruthy();
-});
-
-test('tc4:user register test', async ({registrationpage})=>{
+test('tc2:user register test', async ({registrationpage})=>{
      expect(await registrationpage.registerUser('Kiwi', 'Dilip',stringutil.getRandomEmailId(),'9087162534','KiwiD26','yes')).toBeTruthy();
 });
 

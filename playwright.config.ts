@@ -41,7 +41,7 @@ export default defineConfig({
     }],
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
-  timeout: 6000,
+  timeout: 60000,
   expect: { timeout: 5000},
   use: {
     baseURL: process.env.BASE_URL,

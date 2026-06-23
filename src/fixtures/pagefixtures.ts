@@ -12,8 +12,8 @@ type pageFixtures = {
     homepage: HomePage,
     registrationpage:RegistrationPage,
     //testdata: Record<string, string>[]
-    logintestdata:any,
-    registrationtestdata:any
+    logintestdata:Record<string, string>[],
+    registrationtestdata:Record<string, string>[]
 };
 
 //extend playwright base test:
@@ -39,13 +39,13 @@ export let test = baseTest.extend<pageFixtures>({
   //   await use(testrecord);
   // },
 
-  // ✅ LOGIN CSV DATA
+
   logintestdata: async ({}, use) => {
     const data = csvhelper.readCsv('src/data/logindata.csv');
     await use(data);
   },
 
-  // ✅ REGISTRATION CSV DATA
+
   registrationtestdata: async ({}, use) => {
     const data = csvhelper.readCsv('src/data/registrationdata.csv');
     await use(data);

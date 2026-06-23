@@ -1,0 +1,6 @@
+Telephone: 9988776655
+Telephone filled
+Password: PerKar26
+Password filled
+Confirm Password filled
+Registration--SUCCESS

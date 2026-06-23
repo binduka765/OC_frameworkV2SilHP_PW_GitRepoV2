@@ -2,6 +2,7 @@ import { Locator, Page } from "@playwright/test";
 import { BasePage } from "./BasePage";
 
 export class RegistrationPage extends BasePage {
+  [x: string]: any;
   //private page class vars:
   private readonly fName: Locator;
   private readonly lName: Locator;
@@ -44,8 +45,11 @@ export class RegistrationPage extends BasePage {
     });
 
     //imp page Links:
-    this.loginLink = page.getByRole("link", { name: "Login" });
-    this.forgotPwdLink = page.getByRole("link", { name: "Forgotten Password" });
+    this.loginLink = page.getByRole('link', { name: 'Login' });
+    //page.getByRole("link", { name: "Login" });
+
+    this.forgotPwdLink = page.getByRole('link', { name: 'Forgotten Password',exact:true });
+    //page.locator('//a[text()="Forgotten Password"]');
   }
 
   //public page Actions/behaviour:
@@ -59,6 +63,7 @@ export class RegistrationPage extends BasePage {
 
   async isForgotPwdLinkOnRegPageExist() {
     return await this.forgotPwdLink.isVisible();
+     
   }
 
   async registerUser(

@@ -1,5 +1,25 @@
 import { defineConfig, devices } from '@playwright/test';
 
+import dotenv from 'dotenv';
+
+//ENV=qa npx playwright test
+const ENV = process.env.ENV || "qa";
+console.log('running tests on Environment: ',ENV);
+dotenv.config({ path: `src/config/.env.${ENV}` });
+
+// import path from "path";
+// import dotenv from "dotenv";
+
+// const ENV = process.env.ENV || "qa";
+
+// dotenv.config({
+//   path: path.join("config", `.env.${ENV}`),
+// });
+
+console.log(process.env.BASE_URL);
+console.log(process.env.APPUSERNAME);
+console.log(process.env.APPPASSWORD);
+
 
 export default defineConfig({
   testDir: './tests',
@@ -12,12 +32,20 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [
+    ["list"],
+    ["html", { outputFolder: "reports/html-report", open: "never" }],
+    ["allure-playwright", {
+      outputFolder: "allure-results",
+      suiteTitle: true,
+    }],
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
-  timeout: 60000,
+  timeout: 6000,
   expect: { timeout: 5000},
   use: {
-    baseURL: 'https://naveenautomationlabs.com/',
+    baseURL: process.env.BASE_URL,
+    headless: false,
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
     trace: 'on-first-retry',

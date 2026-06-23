@@ -12,6 +12,10 @@ export class LoginPage extends BasePage {
   private readonly forgotpwdlink: Locator;
   private readonly logo:Locator;
 
+  private readonly errormesge: Locator;
+
+  private readonly registerUserLink: Locator;
+
 
   //class construc...to initialize the class vars + inherit parent construc...
   constructor(page:Page){
@@ -22,6 +26,10 @@ export class LoginPage extends BasePage {
 
     this.forgotpwdlink = page.getByRole('link', { name: 'Forgotten Password' }).first();
     this.logo = page.getByRole('img', { name: 'naveenopencart' });
+
+    this.errormesge = page.locator('div.alert.alert-danger.alert-dismissible');
+
+    this.registerUserLink = page.getByRole('link', { name: 'Register' });
   }
 
   //public page actions/behaviour:
@@ -49,6 +57,13 @@ export class LoginPage extends BasePage {
     await this.submitbtn.click();
   }
 
+  async isInvalidLoginMesgeDisplayed():Promise<boolean>{
+    return await this.errormesge.isVisible();
+  }
+
+  async navigateToRegistrationPage(){
+    return await this.registerUserLink.click();
+  }
 
 
 }

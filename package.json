@@ -1,18 +1,30 @@
 {
   "name": "oc_frameworkv2silhp_pw",
   "version": "1.0.0",
-   "description": "to practice end to end and to debug",
+  "description": "to practice end to end and to debug",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:chrome": "npx playwright test --project=chromium",
+    "allure:generate": "npx allure generate allure-results --clean -o allure-report",
+    "allure:open": "npx allure open allure-report",
+    "allure:report": "npm run allure:generate && npm run allure:open",
+    "allure:clean": "rm -rf allure-results allure-report"
+  },
   "keywords": [],
   "author": "veniKa",
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "csv-parse": "^7.0.0",
+    "dotenv": "^17.4.2",
     "playwright": "^1.61.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.61.0",
-    "@types/node": "^26.0.0"
+    "@types/node": "^26.0.0",
+    "allure-commandline": "^2.43.0",
+    "allure-playwright": "^3.10.0"
   }
 }

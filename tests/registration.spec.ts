@@ -23,6 +23,6 @@ test('tc1: registration page title test', async ({})=>{
 });
 
 
-test('tc4:user register test', async ({})=>{
+test('tc2:user register test', async ({})=>{
      expect(await registrationpage.registerUser('Kiwi', 'Dilip',stringutil.getRandomEmailId(),'9087162534','KiwiD26','yes')).toBeTruthy();
 });

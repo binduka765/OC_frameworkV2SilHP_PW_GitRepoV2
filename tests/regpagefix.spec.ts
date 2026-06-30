@@ -1,10 +1,10 @@
+import { test, expect } from "../src/fixtures/pagefixtures";
+import { HomePage } from "../src/pages/HomePage";
+import { csvhelper } from "../src/utils/csvhelper";
+import { JsonHelper } from "../src/utils/jsonhelper";
+import { stringutil } from "../src/utils/stringutil";
 
-import {test, expect} from '../src/fixtures/pagefixtures';
-import { HomePage } from '../src/pages/HomePage';
-import { csvhelper } from '../src/utilis/csvhelper';
-import { stringutil } from '../src/utilis/stringutil';
-
-test.beforeEach(async ({ loginpage, registrationpage}) => {
+test.beforeEach(async ({ loginpage, registrationpage }) => {
   await loginpage.goToLoginPage();
   await loginpage.navigateToRegistrationPage();
 });
@@ -17,11 +17,18 @@ test("tc1:register page title test", async ({ registrationpage }) => {
   expect(regPageTitle).toBe("Register Account");
 });
 
-
-test('tc2:user register test', async ({registrationpage})=>{
-     expect(await registrationpage.registerUser('Kiwi', 'Dilip',stringutil.getRandomEmailId(),'9087162534','KiwiD26','yes')).toBeTruthy();
+test("tc2:user register test", async ({ registrationpage }) => {
+  expect(
+    await registrationpage.registerUser(
+      "Kiwi",
+      "Dilip",
+      stringutil.getRandomEmailId(),
+      "9087162534",
+      "KiwiD26",
+      "yes",
+    ),
+  ).toBeTruthy();
 });
-
 
 //DD_1:running in sequential mode: disadvantage--shows as only one TC on report
 //hence test data from fixtures -- has a DRAWBACK
@@ -31,35 +38,58 @@ test('tc2:user register test', async ({registrationpage})=>{
 //     }
 // });
 
-test('registration test', async ({ registrationpage, registrationtestdata }) => {
-
+test("registration test", async ({
+  registrationpage,
+  registrationtestdata,
+}) => {
   for (const row of registrationtestdata) {
-
     await registrationpage.registerUser(
       row.fn,
       row.ln,
       stringutil.getRandomEmailId(),
       row.tel,
       row.pwd,
-      row.subscribe
+      row.subscribe,
     );
-
   }
-
 });
 
 //DD_2 direct pull of data from dot csv file thru helper file
 //without fixtures, parallel mode, read csv directly and loop the test method row wise
-let testrecord = csvhelper.readCsv('src/data/registrationdata.csv'); //Data Provider
+let testrecord = csvhelper.readCsv("src/data/registrationdata.csv"); //Data Provider
 
-    for(let row of testrecord){
-      
-        test(`POSITIVE registration test ${row.username} - ${row.password}`, async ({registrationpage})=>{
-            await registrationpage.registerUser(row.fn, row.ln, stringutil.getRandomEmailId(), row.tel, row.pwd,row.subscribe);
-            
-  
-        });
+for (let row of testrecord) {
+  test(`POSITIVE registration test ${row.fn} - ${row.ln}`, async ({
+    registrationpage,
+  }) => {
+    expect(
+      await registrationpage.registerUser(
+        row.fn,
+        row.ln,
+        stringutil.getRandomEmailId(),
+        row.tel,
+        row.pwd,
+        row.subscribe,
+      ),
+    ).toBeTruthy;
+  });
+}
 
-    }
+let regJsonDataRecord = JsonHelper.readJson("src/data/regdata.json");
 
-
+for (let row of regJsonDataRecord) {
+  test(`POSITIVE TEST-valid register test with valid json data ${row.fn}`, async ({
+    registrationpage,
+  }) => {
+    expect(
+      await registrationpage.registerUser(
+        row.fn,
+        row.ln,
+        stringutil.getRandomEmailId(),
+        row.tel,
+        row.pwd,
+        row.subscribe,
+      ),
+    ).toBeTruthy;
+  });
+}

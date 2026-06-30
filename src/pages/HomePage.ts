@@ -8,12 +8,18 @@ export class HomePage extends BasePage {
   private readonly logoutLink: Locator;
   private readonly allHeaders: Locator;
 
+  private readonly search: Locator;
+  private readonly searchIcon:Locator;
+
 
   //public class construc...to initialize class vars + call super constructor
   constructor(page:Page){
     super(page);
     this.logoutLink = page.getByRole('link', { name: 'Logout' });
     this.allHeaders = page.getByRole('heading', { level: 2 });
+
+    this.search = page.getByRole('textbox', { name: 'Search' });
+    this.searchIcon = page.locator('div#search button');
   }
 
 
@@ -34,4 +40,10 @@ export class HomePage extends BasePage {
     return await this.allHeaders.allInnerTexts();
   }
 
+  async doSearch(searchKey:string):Promise<void>{
+    await this.search.fill(searchKey);
+    await this.searchIcon.click();
+  }
+
 }
+

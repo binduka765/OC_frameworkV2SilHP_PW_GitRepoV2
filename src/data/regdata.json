@@ -1,0 +1,19 @@
+[
+  {
+    "fn": "Percy",
+    "ln": "Karnam",
+    "email": "PerKar@appmail.com",
+    "tel": "9082939491",
+    "pwd": "PerKar21",
+    "subscribe": "yes"
+  },
+  {
+    "fn": "Dexter",
+    "ln": "Karnam",
+    "email": "DexKar@open.com",
+    "tel": "9089283741",
+    "pwd": "PerKar21",
+    "subscribe": "yes"
+  }
+
+]

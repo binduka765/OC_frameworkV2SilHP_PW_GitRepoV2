@@ -1,3 +1,0 @@
-user credentials: invalid@open.com-wrong123
-user credentials: -pw123
-user credentials: pwbatchtest@open.com-

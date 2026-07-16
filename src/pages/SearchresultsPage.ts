@@ -21,6 +21,6 @@ export class searchresultsPage extends BasePage {
 
     //this method lands on ProductDetails page:new page
     async selectProductFromSearchResults(productName:string){//creating dynamic locator
-      await this.page.getByRole('heading', { name: productName, exact:true }).first().click();
+      await this.page.getByRole('link', { name: productName, exact:true}).first().click();
     }
 }

@@ -4,6 +4,8 @@ import { LoginPage } from "../pages/LoginPage";
 import { csvhelper } from "../utils/csvhelper";
 import { RegistrationPage } from "../pages/RegistrationPage";
 import { searchresultsPage } from "../pages/SearchresultsPage";
+import { ProductdetailsPage } from "../pages/ProductdetailsPage";
+import { CartPage } from "../pages/CartPage";
 
 //define types for page fixtures:
 type pageFixtures = {
@@ -14,6 +16,8 @@ type pageFixtures = {
   logintestdata: Record<string, string>[];
   registrationtestdata: Record<string, string>[];
   searchresultspage: searchresultsPage;
+  productdetailspage: ProductdetailsPage;
+  cartpage: CartPage;
 };
 
 //extend playwright base test:
@@ -36,6 +40,16 @@ export let test = baseTest.extend<pageFixtures>({
   searchresultspage: async ({ page }, use) => {
     let searchresultspage = new searchresultsPage(page);
     await use(searchresultspage);
+  },
+
+  productdetailspage: async ({page}, use)=>{
+    let productdetailspage = new ProductdetailsPage(page);
+    await use(productdetailspage);
+  },
+
+  cartpage: async ({page}, use)=>{
+    let cartpage = new CartPage(page);
+    await use(cartpage);
   },
 
   // testdata: async ({}, use) => {

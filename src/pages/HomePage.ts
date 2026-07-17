@@ -11,8 +11,6 @@ export class HomePage extends BasePage {
   private readonly search: Locator;
   private readonly searchIcon:Locator;
 
-  private readonly user:Locator;
-
 
   //public class construc...to initialize class vars + call super constructor
   constructor(page:Page){
@@ -23,7 +21,7 @@ export class HomePage extends BasePage {
     this.search = page.getByRole('textbox', { name: 'Search' });
     this.searchIcon = page.locator('div#search button');
 
-    this.user = page.locator('div#fakeToBeDeleted');
+    //this.user = page.locator('div#fakeToBeDeleted');
   }
 
 

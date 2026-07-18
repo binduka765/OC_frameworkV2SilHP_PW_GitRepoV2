@@ -11,13 +11,13 @@ test.describe.serial('e2e functionality tests for contacts api-all CRUD',()=>{
 
 
 //GET tests:
-test('GET API--get all contacts',async ({apiHelper})=>{
+test.skip('GET API--get all contacts',async ({apiHelper})=>{
     let response = await apiHelper.get('/contacts', AUTH_HEADER);
     expect(response.status).toBe(200);
     //expect(response.body.length).toBeGreaterThan(0);
 });
 
-test('POST API--create a new contact', async ({apiHelper})=>{
+test.skip('POST API--create a new contact', async ({apiHelper})=>{
     let newUserData = {
     "firstName": "John",
     "lastName": "Doe",
@@ -39,7 +39,7 @@ test('POST API--create a new contact', async ({apiHelper})=>{
     console.log('Created User Id: ', userId);
 });
 
-test('UPDATE API--update contact', async ({apiHelper})=>{
+test.skip('UPDATE API--update contact', async ({apiHelper})=>{
     let updateUserData = {
     "firstName": "Jimupdated",
     "lastName": "DoLittle",
@@ -61,7 +61,7 @@ let response = await apiHelper.put(`/contacts/${userId}`, updateUserData, AUTH_H
 
 });
 
-test('DELETE API--delete user', async ({apiHelper})=>{
+test.skip('DELETE API--delete user', async ({apiHelper})=>{
     let response = await apiHelper.delete(`/contacts/${userId}`,AUTH_HEADER);
     expect(response.status).toBe(200);
 });

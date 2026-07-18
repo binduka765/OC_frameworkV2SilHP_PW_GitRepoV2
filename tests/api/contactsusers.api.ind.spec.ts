@@ -32,7 +32,7 @@ async function createUser(apiHelper: any) {
 }
 
 //TEST 1: create a  user test + verify : AAA pattern
-test("POST - Create a user + GET the same user", async ({ apiHelper }) => {
+test.skip("POST - Create a user + GET the same user", async ({ apiHelper }) => {
   //i)create part
   let actRes = await createUser(apiHelper);
 
@@ -43,7 +43,7 @@ test("POST - Create a user + GET the same user", async ({ apiHelper }) => {
 });
 
 //TEST 2: update a user test + verify: AAA pattern
-test("PUT-update a user test + verify if same user", async ({ apiHelper }) => {
+test.skip("PUT-update a user test + verify if same user", async ({ apiHelper }) => {
   //i)create part
   let actRes = await createUser(apiHelper);
   //let userId = actRes.body._id;

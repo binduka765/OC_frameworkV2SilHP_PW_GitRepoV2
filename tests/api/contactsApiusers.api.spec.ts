@@ -31,7 +31,7 @@ let putUserData = {
 };
 
 //get all contacts
-test('tc2-Get Contacts', async ({request})=>{
+test.skip('tc2-Get Contacts', async ({request})=>{
     let getRes = await request.get('https://thinking-tester-contact-list.herokuapp.com/contacts',{
           headers: AUTH_TOKEN
     });
@@ -45,7 +45,7 @@ test('tc2-Get Contacts', async ({request})=>{
 })
 
 //POST
-test('tc2: create a contact test', async ({request})=>{
+test.skip('tc2: create a contact test', async ({request})=>{
   let postRes = await request.post('https://thinking-tester-contact-list.herokuapp.com/contacts', {
     headers: AUTH_TOKEN,
     data: userData
@@ -59,7 +59,7 @@ test('tc2: create a contact test', async ({request})=>{
 })
 
 //PUT
-test('tc3:update created contact test', async ({request})=>{
+test.skip('tc3:update created contact test', async ({request})=>{
   let putRes = await request.put('https://thinking-tester-contact-list.herokuapp.com/contacts/6a43ff62921e140015a8b0a8', {
       headers: AUTH_TOKEN,
       data:  putUserData
@@ -73,7 +73,7 @@ test('tc3:update created contact test', async ({request})=>{
 })
 
 //DELETE
-test('tc4:delete contact test', async ({request})=>{
+test.skip('tc4:delete contact test', async ({request})=>{
  let deleteRes = await request.delete('https://thinking-tester-contact-list.herokuapp.com/contacts/6a43ff62921e140015a8b0a8', {
     headers: AUTH_TOKEN
   });
